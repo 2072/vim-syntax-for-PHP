@@ -433,7 +433,7 @@ endif
 syn cluster phpClConst  contains=phpFunctions,phpIdentifier,phpConditional,phpRepeat,phpStatement,phpOperator,phpRelation,phpStringSingle,phpStringDouble,phpBacktick,phpNumber,phpFloat,phpKeyword,phpType,phpBoolean,phpStructure,phpMethodsVar,phpConstant,phpCoreConstant,phpException
 syn cluster phpClInside contains=@phpClConst,phpComment,phpLabel,phpParent,phpParentError,phpInclude,phpHereDoc,phpNowDoc
 syn cluster phpClFunction contains=@phpClInside,phpDefine,phpParentError,phpStorageClass
-syn cluster phpClTop  contains=@phpClFunction,phpFoldFunction,phpFoldClass,phpFoldInterface,phpFoldTry,phpFoldCatch
+syn cluster phpClTop  contains=@phpClFunction,phpFoldFunction,phpFoldClass,phpFoldInterface,phpFoldTrait,phpFoldTry,phpFoldCatch,phpFoldFinally
 
 " Php Region
 if exists("php_parent_error_open")
@@ -467,8 +467,10 @@ if exists("php_folding") && php_folding==1
   syn match phpDefine "\(\s\|^\)\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\(\s\+.*[;}]\)\@="  contained contains=phpSCKeyword
   syn match phpStructure  "\(\s\|^\)\(abstract\s\+\|final\s\+\)*class\(\s\+.*}\)\@="  contained
   syn match phpStructure  "\(\s\|^\)interface\(\s\+.*}\)\@="  contained
+  syn match phpStructure  "\(\s\|^\)trait\(\s\+.*}\)\@="  contained
   syn match phpException  "\(\s\|^\)try\(\s\+.*}\)\@="  contained
   syn match phpException  "\(\s\|^\)catch\(\s\+.*}\)\@="  contained
+  syn match phpException  "\(\s\|^\)finally\(\s\+.*}\)\@="  contained
 
   set foldmethod=syntax
   syn region  phpFoldHtmlInside matchgroup=Delimiter start="?>" end="<?\(php\)\=" contained transparent contains=@htmlTop
@@ -476,11 +478,13 @@ if exists("php_folding") && php_folding==1
   syn region  phpFoldFunction matchgroup=Define start="^function\s\([^};]*$\)\@=" matchgroup=Delimiter end="^}" contains=@phpClFunction,phpFoldHtmlInside contained transparent fold extend
   syn region  phpFoldClass  matchgroup=Structure start="^\z(\s*\)\(abstract\s\+\|final\s\+\)*class\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction,phpSCKeyword contained transparent fold extend
   syn region  phpFoldInterface  matchgroup=Structure start="^\z(\s*\)interface\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
+  syn region  phpFoldTrait  matchgroup=Structure start="^\z(\s*\)trait\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
   syn region  phpFoldCatch  matchgroup=Exception start="^\z(\s*\)catch\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
   syn region  phpFoldTry  matchgroup=Exception start="^\z(\s*\)try\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
+  syn region  phpFoldFinally  matchgroup=Exception start="^\z(\s*\)finally\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
 elseif exists("php_folding") && php_folding==2
   syn keyword phpDefine function  contained
-  syn keyword phpStructure  abstract class interface  contained
+  syn keyword phpStructure  abstract class interface trait contained
   syn keyword phpException  catch throw try contained
   syn keyword phpStorageClass final global private protected public static  contained
 
@@ -489,13 +493,10 @@ elseif exists("php_folding") && php_folding==2
   syn region  phpParent matchgroup=Delimiter start="{" end="}"  contained contains=@phpClFunction,phpFoldHtmlInside transparent fold
 else
   syn keyword phpDefine function  contained
-  syn keyword phpStructure  abstract class interface  contained
-  syn keyword phpException  catch throw try contained
+  syn keyword phpStructure  abstract class interface trait contained
+  syn keyword phpException  catch throw try finally contained
   syn keyword phpStorageClass final global private protected public static  contained
 endif
-
-" TODO: fold on "trait". For now just make sure it gets colored:
-syn keyword phpStructure trait
 
 " ================================================================
 " Peter Hodge - June 9, 2006
