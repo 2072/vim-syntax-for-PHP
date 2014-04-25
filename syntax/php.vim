@@ -489,7 +489,14 @@ if exists("php_folding") && php_folding==1
   syn region  phpFoldHtmlInside matchgroup=Delimiter start="?>" end="<?\(php\)\=" contained transparent contains=@htmlTop
 
   " methods and functions
+  " use a trick here to simplify the pattern and to be able to use a
+  " background color.
+  " use the Storageclass match group and rs=e-9 to make the region start
+  " before 'function ' so that function can have the proper color
   syn region  phpFoldFunction matchgroup=Storageclass start="^\z(\s*\)\(abstract\s\+\|final\s\+\|private\s\+\|protected\s\+\|public\s\+\|static\s\+\)*function\s\([^};]*$\)\@="rs=e-9 matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,@phpClException,phpFoldHtmlInside,phpFCKeyword contained transparent fold extend
+
+   " Unfortunately the rs=e-9 makes the highlight fail when 'function' is at col 0
+  syn region  phpFoldFunction matchgroup=Define start="^function\(\s[^};]*$\)\@=" matchgroup=Delimiter end="^}" contains=@phpClFunction,@phpClException,phpFoldHtmlInside,phpFCKeyword contained transparent fold extend
 
   " interfaces, trait and classes
   syn region  phpFoldInterface  matchgroup=Structure start="^\z(\s*\)interface\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
