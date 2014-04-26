@@ -283,6 +283,7 @@ syn keyword phpType bool[ean] int[eger] real double float string array object NU
 
 " Structure
 syn keyword phpStructure  namespace extends implements instanceof parent self contained
+syn match phpStructure "\<static\(\s\+\$\|::\)\@=" contained display
 
 " Operator
 syn match phpOperator "[-=+%^&|*!.~?:]" contained display
