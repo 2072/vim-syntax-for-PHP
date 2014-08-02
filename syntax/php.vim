@@ -502,7 +502,7 @@ if exists("php_folding") && php_folding==1
   " interfaces, trait and classes
   syn region  phpFoldInterface  matchgroup=Structure start="^\z(\s*\)interface\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
   syn region  phpFoldTrait  matchgroup=Structure start="^\z(\s*\)trait\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction contained transparent fold extend
-  syn region  phpFoldClass  matchgroup=Structure start="^\z(\s*\)\(abstract\s\+\|final\s\+\)*class\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction,phpSCKeyword contained transparent fold extend
+  syn region  phpFoldClass  matchgroup=Structure start="^\z(\s*\)\(abstract\s\+\|final\s\+\)*class\s\+\([^}]*$\)\@=" matchgroup=Delimiter end="^\z1}" contains=@phpClFunction,phpFoldFunction,phpSCKeyword contained transparent extend
 
   "Exceptions
   syn region  phpFoldTry  matchgroup=Exception start="^\z(\s*\)try\(.*{\)\@!" matchgroup=Delimiter end="^\z1}" contains=@phpClInside,@phpClException,phpDefine contained transparent fold extend
