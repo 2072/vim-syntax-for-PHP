@@ -13,9 +13,9 @@ See the commit log to see the changes from Jason Woofenden's version.
  1. Install and configure the [Vundle](https://github.com/gmarik/vundle) plug-in manager, [follow the instructions here](https://github.com/gmarik/vundle#quick-start)
  2. Add the following line to your `.vimrc`:
 
-         Bundle '2072/vim-syntax-for-PHP.git'
+         Plugin '2072/vim-syntax-for-PHP.git'
  3. Source your `.vimrc` with `:so %` or otherwise reload your VIm
- 4. Run the `:BundleInstall` command
+ 4. Run the `:PluginInstall` command
 
 ### Pathogen
  1. Install the [pathogen.vim](https://github.com/tpope/vim-pathogen) plug-in, [follow the instructions here](https://github.com/tpope/vim-pathogen#installation)
