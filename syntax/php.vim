@@ -4,7 +4,7 @@
 " Last Change: 2014-04-24
 " URL: https://github.com/2072/vim-syntax-for-PHP
 " Former Maintainers: Jason Woofenden <jason@jasonwoof.com>,
-"         Peter Hodge <toomuchphp-vim@yahoo.com>, 
+"         Peter Hodge <toomuchphp-vim@yahoo.com>,
 "         Debian VIM Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
 "
 " This is a fork of https://gitorious.org/jasonwoof/vim-syntax/blobs/master/php.vim as it was on 2013-08-28
@@ -67,32 +67,34 @@ elseif exists("b:current_syntax")
 endif
 
 if !exists("main_syntax")
-  let main_syntax = 'php'
+  let g:main_syntax = 'php'
 endif
 
-if version < 600
-  unlet! php_folding
-  if exists("php_sync_method") && !php_sync_method
-    let php_sync_method=-1
+if search('^?>', 'nw') != 0
+  if version < 600
+    unlet! php_folding
+    if exists("php_sync_method") && !php_sync_method
+      let g:php_sync_method=-1
+    endif
+    so <sfile>:p:h/html.vim
+  else
+    runtime! syntax/html.vim
+    unlet b:current_syntax
   endif
-  so <sfile>:p:h/html.vim
-else
-  runtime! syntax/html.vim
-  unlet b:current_syntax
 endif
 
 " accept old options
 if !exists("php_sync_method")
   if exists("php_minlines")
-    let php_sync_method=php_minlines
+    let g:php_sync_method=php_minlines
   else
-    let php_sync_method=-1
+    let g:php_sync_method=-1
   endif
 endif
 
 if exists("php_parentError") && !exists("php_parent_error_open") && !exists("php_parent_error_close")
-  let php_parent_error_close=1
-  let php_parent_error_open=1
+  let g:php_parent_error_close=1
+  let g:php_parent_error_open=1
 endif
 
 syn cluster htmlPreproc add=phpRegion,phpRegionAsp,phpRegionSc
@@ -480,7 +482,7 @@ if exists("php_folding") && php_folding==1
   syn match phpException  "\(\s\|^\)try\(\s\+.*}\)\@="  contained
   syn match phpException  "\(\s\|^\)catch\(\s\+.*}\)\@="  contained
   syn match phpException  "\(\s\|^\)finally\(\s\+.*}\)\@="  contained
- 
+
   " We only fold on certain conditions (try(.*{)\@! and ^\s*(catch|finally)) so take
   " care of the other possibilities
   syn match phpException  "\(^\s*}\s\)\@<=\(catch\|finally\)\>"  contained
@@ -583,13 +585,13 @@ highlight link phpInterfaces phpConstant
 
 " option defaults:
 if ! exists('php_special_functions')
-    let php_special_functions = 1
+    let g:php_special_functions = 1
 endif
 if ! exists('php_alt_comparisons')
-    let php_alt_comparisons = 1
+    let g:php_alt_comparisons = 1
 endif
 if ! exists('php_alt_assignByReference')
-    let php_alt_assignByReference = 1
+    let g:php_alt_assignByReference = 1
 endif
 
 if php_special_functions
@@ -655,7 +657,7 @@ syntax match  phpDocTodo  "@\(todo\|fixme\|xxx\)\(\s\+\)\?" containedin=phpComme
 " For version 5.8 and later: only when an item doesn't have highlighting yet
 if version >= 508 || !exists("did_php_syn_inits")
   if version < 508
-    let did_php_syn_inits = 1
+    let g:did_php_syn_inits = 1
     command -nargs=+ HiLink hi link <args>
   else
     command -nargs=+ HiLink hi def link <args>
@@ -730,7 +732,7 @@ endif
 let b:current_syntax = "php"
 
 if main_syntax == 'php'
-  unlet main_syntax
+  unlet g:main_syntax
 endif
 
 " put cpoptions back the way we found it
