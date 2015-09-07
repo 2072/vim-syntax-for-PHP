@@ -413,18 +413,18 @@ if version >= 600
   syn case match
 
   " HereDoc
-  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\(\"\=\)\z(\I\i*\)\2$" end="^\z1\(;\=$\)\@=" contained contains=phpIdentifier,phpIdentifierSimply,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
+  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*\(\"\=\)\z(\I\i*\)\2$" end="^\z1\(;\=$\)\@=" contained contains=phpIdentifier,phpIdentifierSimply,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
 " including HTML,JavaScript,SQL even if not enabled via options
-  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\(\"\=\)\z(\(\I\i*\)\=\(html\)\c\(\i*\)\)\2$" end="^\z1\(;\=$\)\@="  contained contains=@htmlTop,phpIdentifier,phpIdentifierSimply,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
-  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\(\"\=\)\z(\(\I\i*\)\=\(sql\)\c\(\i*\)\)\2$" end="^\z1\(;\=$\)\@=" contained contains=@sqlTop,phpIdentifier,phpIdentifierSimply,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
-  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\(\"\=\)\z(\(\I\i*\)\=\(javascript\)\c\(\i*\)\)\2$" end="^\z1\(;\=$\)\@="  contained contains=@htmlJavascript,phpIdentifierSimply,phpIdentifier,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
+  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*\(\"\=\)\z(\(\I\i*\)\=\(html\)\c\(\i*\)\)\2$" end="^\z1\(;\=$\)\@="  contained contains=@htmlTop,phpIdentifier,phpIdentifierSimply,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
+  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*\(\"\=\)\z(\(\I\i*\)\=\(sql\)\c\(\i*\)\)\2$" end="^\z1\(;\=$\)\@=" contained contains=@sqlTop,phpIdentifier,phpIdentifierSimply,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
+  syn region  phpHereDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*\(\"\=\)\z(\(\I\i*\)\=\(javascript\)\c\(\i*\)\)\2$" end="^\z1\(;\=$\)\@="  contained contains=@htmlJavascript,phpIdentifierSimply,phpIdentifier,phpIdentifierComplex,phpBackslashSequences,phpMethodsVar keepend extend
 
   " NowDoc
-  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<='\z(\I\i*\)'$" end="^\z1\(;\=$\)\@=" contained keepend extend
+  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*'\z(\I\i*\)'$" end="^\z1\(;\=$\)\@=" contained keepend extend
 " including HTML,JavaScript,SQL even if not enabled via options
-  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<='\z(\(\I\i*\)\=\(html\)\c\(\i*\)\)'$" end="^\z1\(;\=$\)\@="  contained contains=@htmlTop keepend extend
-  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<='\z(\(\I\i*\)\=\(sql\)\c\(\i*\)\)'$" end="^\z1\(;\=$\)\@=" contained contains=@sqlTop keepend extend
-  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<='\z(\(\I\i*\)\=\(javascript\)\c\(\i*\)\)'$" end="^\z1\(;\=$\)\@="  contained contains=@htmlJavascript keepend extend
+  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*'\z(\(\I\i*\)\=\(html\)\c\(\i*\)\)'$" end="^\z1\(;\=$\)\@="  contained contains=@htmlTop keepend extend
+  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*'\z(\(\I\i*\)\=\(sql\)\c\(\i*\)\)'$" end="^\z1\(;\=$\)\@=" contained contains=@sqlTop keepend extend
+  syn region  phpNowDoc  matchgroup=Delimiter start="\(<<<\)\@<=\s*'\z(\(\I\i*\)\=\(javascript\)\c\(\i*\)\)'$" end="^\z1\(;\=$\)\@="  contained contains=@htmlJavascript keepend extend
   syn case ignore
 endif
 
