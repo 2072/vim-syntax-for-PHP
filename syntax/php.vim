@@ -853,26 +853,28 @@ syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,
 highlight link phpSpecialFunction phpOperator
 
 " Highlighting for PHP5's built-in classes
-" - built-in classes harvested from get_declared_classes() in 5.1.4
+" - built-in classes harvested from get_declared_classes() in 5.6.16
 syntax keyword phpClasses containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
-  \ stdClass __PHP_Incomplete_Class php_user_filter Directory ArrayObject
-  \ Exception ErrorException LogicException BadFunctionCallException BadMethodCallException DomainException
-  \ RecursiveIteratorIterator IteratorIterator FilterIterator RecursiveFilterIterator ParentIterator LimitIterator
-  \ CachingIterator RecursiveCachingIterator NoRewindIterator AppendIterator InfiniteIterator EmptyIterator
-  \ ArrayIterator RecursiveArrayIterator DirectoryIterator RecursiveDirectoryIterator
-  \ InvalidArgumentException LengthException OutOfRangeException RuntimeException OutOfBoundsException
-  \ OverflowException RangeException UnderflowException UnexpectedValueException
-  \ PDO PDOException PDOStatement PDORow
-  \ Reflection ReflectionFunction ReflectionParameter ReflectionMethod ReflectionClass
-  \ ReflectionObject ReflectionProperty ReflectionExtension ReflectionException
-  \ SplFileInfo SplFileObject SplTempFileObject SplObjectStorage
-  \ XMLWriter LibXMLError XMLReader SimpleXMLElement SimpleXMLIterator
-  \ DOMException DOMStringList DOMNameList DOMDomError DOMErrorHandler
-  \ DOMImplementation DOMImplementationList DOMImplementationSource
-  \ DOMNode DOMNameSpaceNode DOMDocumentFragment DOMDocument DOMNodeList DOMNamedNodeMap
-  \ DOMCharacterData DOMAttr DOMElement DOMText DOMComment DOMTypeinfo DOMUserDataHandler
-  \ DOMLocator DOMConfiguration DOMCdataSection DOMDocumentType DOMNotation DOMEntity
-  \ DOMEntityReference DOMProcessingInstruction DOMStringExtend DOMXPath
+  \ stdClass Exception ErrorException Closure Generator DateTime 
+  \ DateTimeImmutable DateTimeZone DateInterval DatePeriod LibXMLError DOMException 
+  \ DOMStringList DOMNameList DOMImplementationList DOMImplementationSource DOMImplementation DOMNode 
+  \ DOMNameSpaceNode DOMDocumentFragment DOMDocument DOMNodeList DOMNamedNodeMap DOMCharacterData 
+  \ DOMAttr DOMElement DOMText DOMComment DOMTypeinfo DOMUserDataHandler 
+  \ DOMDomError DOMErrorHandler DOMLocator DOMConfiguration DOMCdataSection DOMDocumentType 
+  \ DOMNotation DOMEntity DOMEntityReference DOMProcessingInstruction DOMStringExtend DOMXPath 
+  \ finfo LogicException BadFunctionCallException BadMethodCallException DomainException InvalidArgumentException 
+  \ LengthException OutOfRangeException RuntimeException OutOfBoundsException OverflowException RangeException 
+  \ UnderflowException UnexpectedValueException RecursiveIteratorIterator IteratorIterator FilterIterator RecursiveFilterIterator 
+  \ CallbackFilterIterator RecursiveCallbackFilterIterator ParentIterator LimitIterator CachingIterator RecursiveCachingIterator 
+  \ NoRewindIterator AppendIterator InfiniteIterator RegexIterator RecursiveRegexIterator EmptyIterator 
+  \ RecursiveTreeIterator ArrayObject ArrayIterator RecursiveArrayIterator SplFileInfo DirectoryIterator 
+  \ FilesystemIterator RecursiveDirectoryIterator GlobIterator SplFileObject SplTempFileObject SplDoublyLinkedList 
+  \ SplQueue SplStack SplHeap SplMinHeap SplMaxHeap SplPriorityQueue 
+  \ SplFixedArray SplObjectStorage MultipleIterator PDOException PDO PDOStatement 
+  \ PDORow ReflectionException Reflection ReflectionFunctionAbstract ReflectionFunction ReflectionParameter 
+  \ ReflectionMethod ReflectionClass ReflectionObject ReflectionProperty ReflectionExtension ReflectionZendExtension 
+  \ SessionHandler SimpleXMLElement SimpleXMLIterator __PHP_Incomplete_Class php_user_filter Directory 
+  \ XMLReader XMLWriter CURLFile
 highlight link phpClasses phpFunctions
 
 " Highlighting for PHP5's built-in interfaces
