@@ -601,6 +601,7 @@ syn match phpOperator "||\|\<x\=or\>" contained display
 syn match phpRelation "[!=<>]=" contained display
 syn match phpRelation "[<>]"  contained display
 syn match phpMemberSelector "->"  contained display
+syn match phpMemberSelector "::"  contained display
 syn match phpVarSelector  "\$"  contained display
 
 " Identifier
@@ -641,6 +642,7 @@ syn region  phpIdentifierComplexP matchgroup=phpParent start="\[" end="]" contai
 
 " Methoden
 syn match phpMethodsVar "->\h\w*" contained contains=phpMethods,phpMemberSelector display
+syn match phpMethodsVar "::\h\w*" contained contains=phpMethods,phpMemberSelector display
 
 " Include
 syn keyword phpInclude  include require include_once require_once use contained
