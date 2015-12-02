@@ -880,8 +880,9 @@ highlight link phpClasses phpFunctions
 " Highlighting for PHP5's built-in interfaces
 " - built-in classes harvested from get_declared_interfaces() in 5.1.4
 syntax keyword phpInterfaces containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
-  \ Iterator IteratorAggregate RecursiveIterator OuterIterator SeekableIterator
-  \ Traversable ArrayAccess Serializable Countable SplObserver SplSubject Reflector
+  \ Traversable IteratorAggregate Iterator ArrayAccess Serializable DateTimeInterface 
+  \ JsonSerializable RecursiveIterator OuterIterator Countable SeekableIterator SplObserver 
+  \ SplSubject Reflector SessionHandlerInterface SessionIdInterface
 highlight link phpInterfaces phpConstant
 
 " option defaults:
