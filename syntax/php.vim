@@ -913,16 +913,16 @@ syn match phpNumber "\<0x\x\{1,8}\>"  contained display
 syn match phpFloat  "\(-\=\<\d+\|-\=\)\.\d\+\>" contained display
 
 " Backslash escapes
-	syn case match
-	" for double quotes and heredoc
-	syn match phpBackslashSequences  "\\[fnrtv\\\"$]" contained display
-	syn match phpBackslashSequences  "\\\d\{1,3}"  contained contains=phpOctalError display
-	syn match phpBackslashSequences  "\\x\x\{1,2}" contained display
-	" additional sequence for double quotes only
-	syn match phpBackslashDoubleQuote "\\[\"]" contained display
-	" for single quotes only
-	syn match phpBackslashSingleQuote "\\[\\']" contained display
-	syn case ignore
+syn case match
+" for double quotes and heredoc
+syn match phpBackslashSequences  "\\[fnrtv\\\"$]" contained display
+syn match phpBackslashSequences  "\\\d\{1,3}"  contained contains=phpOctalError display
+syn match phpBackslashSequences  "\\x\x\{1,2}" contained display
+" additional sequence for double quotes only
+syn match phpBackslashDoubleQuote "\\[\"]" contained display
+" for single quotes only
+syn match phpBackslashSingleQuote "\\[\\']" contained display
+syn case ignore
 
 
 " Error
@@ -932,7 +932,12 @@ if exists("php_parent_error_close")
 endif
 
 " Todo
-syn keyword phpTodo todo fixme xxx  contained
+" NOTE: Called Codetags by Micah Elliott <mde at tracos.org> 
+" SEE: https://www.python.org/dev/peps/pep-0350/
+" Most useful codetags
+syn case match
+syn keyword phpTodo  TODO DONE YAGNI FIXME XXX DEBUG BROKEN REFACTOR INSPECT BUG BUGFIX NOFIX UNFIXABLE REQUIREMENT IDEA QUESTION ALERT HACK PORTABILITY WARNING CAUTION NOTE HELP GLOSSARY SEE REF REFERENCE TODOC EXPLAIN THANKS STATUS REVIEWED  contained
+syn case ignore
 
 " Comment
 if exists("php_parent_error_open")
@@ -1105,6 +1110,7 @@ syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,
   \ __autoload
 highlight link phpSpecialFunction phpOperator
 
+syntax case match
 " Highlighting for PHP5's built-in classes
 " - built-in classes harvested from get_declared_classes() in 5.6.16
 syntax keyword phpClasses containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
@@ -1131,12 +1137,14 @@ syntax keyword phpClasses containedin=ALLBUT,phpComment,phpStringDouble,phpStrin
 highlight link phpClasses phpFunctions
 
 " Highlighting for PHP5's built-in interfaces
-" - built-in classes harvested from get_declared_interfaces() in 5.1.4
+" - built-in classes harvested from get_declared_interfaces() in 5.6.16
 syntax keyword phpInterfaces containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
   \ ArrayAccess Countable DateTimeInterface Iterator IteratorAggregate JsonSerializable 
   \ OuterIterator RecursiveIterator Reflector SeekableIterator Serializable SessionHandlerInterface 
   \ SessionIdInterface SplObserver SplSubject Traversable
 highlight link phpInterfaces phpConstant
+
+syntax case ignore
 
 " option defaults:
 if ! exists('php_special_functions')
