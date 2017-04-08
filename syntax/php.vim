@@ -836,7 +836,7 @@ syn keyword phpStatement  return break continue exit goto  contained
 syn keyword phpKeyword  var const contained
 
 " Type
-syn keyword phpType bool[ean] int[eger] real double float string array object NULL  contained
+syn keyword phpType bool[ean] int[eger] real double float string array object NULL void  contained
 
 " Structure
 syn keyword phpStructure  namespace extends implements instanceof parent self contained
