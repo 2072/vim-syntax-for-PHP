@@ -821,13 +821,13 @@ if exists( "php_baselib" )
 endif
 
 " Conditional
-syn keyword phpConditional  declare else enddeclare endswitch elseif endif if switch  contained
+syn keyword phpConditional  declare else enddeclare endswitch elseif endif if switch match  contained
 
 " Repeat
 syn keyword phpRepeat as do endfor endforeach endwhile for foreach while  contained
 
 " Repeat
-syn keyword phpLabel  case default switch contained
+syn keyword phpLabel  case default switch match contained
 
 " Statement
 syn keyword phpStatement  return break continue exit goto  contained
@@ -1099,7 +1099,7 @@ endif
 " to better indicate what they are.
 syntax keyword phpDefine echo print contained
 syntax keyword phpStructure list contained
-syntax keyword phpConditional switch contained
+syntax keyword phpConditional switch match contained
 syntax keyword phpStatement die contained
 
 " Highlighting for PHP5's user-definable magic class methods
